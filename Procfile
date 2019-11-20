@@ -1,0 +1,1 @@
+web: gunicorn predictor-api:APP --preload --workers 1
