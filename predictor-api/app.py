@@ -24,7 +24,11 @@ def create_app():
         predictions = resnet_model(process_img_path(url))
 
         # Return JSON object with photo_id and a list of predictions as a string
-        return jsonify(photo_id=photo_id,
-                       predictions=str(predictions))
+        try:
+            return jsonify(photo_id=photo_id,
+                           predictions=str(predictions))
+
+        except IOError:
+            return jsonify(error="Error: Invalid URL")
 
     return app
