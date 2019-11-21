@@ -33,6 +33,9 @@ if __name__ == '__main__':
     # photo_url = 'https://media.self.com/photos/5b4371cc4d0c3c282a8878d3/4:3/w_752,c_limit/pineapple.jpg'
     # photo_url = 'https://www.squishable.com/mm5/graphics/00000001/squish_pineapple_15.jpg'
 
+    # doesn't work:
+    # photo_url = 'https://cdn.shopify.com/s/files/1/0712/4751/products/BX7E-02E_High_Large_TOP_2000x.png?v=1571438901'
+
     # 'key' is used within a route like a dictionary key
     val = {'url': photo_url, 'photo_id': 3209847}
     r_success = requests.post(url, data=json.dumps(val))
