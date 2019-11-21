@@ -28,7 +28,7 @@ def create_app():
             return jsonify(photo_id=photo_id,
                            predictions=str(predictions))
 
-        except IOError:
+        except OSError:
             return jsonify(error="Error: Invalid URL")
 
     return app
