@@ -2,6 +2,7 @@
 from flask import Flask, request
 from flask import jsonify
 from .resnet50 import process_img_path, resnet_model
+from  werkzeug.debug import get_current_traceback
 
 def create_app():
     app = Flask(__name__)
@@ -24,11 +25,13 @@ def create_app():
         predictions = resnet_model(process_img_path(url))
 
         # Return JSON object with photo_id and a list of predictions as a string
-        try:
-            return jsonify(photo_id=photo_id,
-                           predictions=str(predictions))
 
-        except OSError:
-            return jsonify(error="Error: Invalid URL")
+        return jsonify(photo_id=photo_id,
+                       predictions=str(predictions))
+
+    @app.errorhandler(werkzeug.exceptions.InternalServerError)
+    def handle_bad_request(e):
+        return 'Invalid URL!', 500
+
 
     return app
