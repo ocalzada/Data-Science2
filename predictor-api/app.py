@@ -4,7 +4,7 @@ This is routing logic for pic-metric-1/predictor.
 from flask import Flask, request
 from flask import jsonify
 from .resnet50 import process_img_path, resnet_model
-from  werkzeug.debug import get_current_traceback
+from werkzeug.debug import get_current_traceback
 
 
 def create_app():
