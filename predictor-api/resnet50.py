@@ -1,3 +1,7 @@
+'''
+This script contains the url and image processing functions,
+and the predictive model itself.
+'''
 import numpy as np
 import requests
 from PIL import Image
@@ -8,9 +12,8 @@ from tensorflow.keras.applications.resnet50 import decode_predictions
 from tensorflow.keras.preprocessing import image
 
 
-
 def process_img_path(url):
-    ''' Processes image url and compresses it to 224 x 224 pixels'''
+    ''' Process image url and compress it to 224 x 224 pixels.'''
     if url.startswith('http://') or url.startswith('https://') or url.startswith('ftp://'):
         response = requests.get(url)
         img = Image.open(BytesIO(response.content))
@@ -21,9 +24,11 @@ def process_img_path(url):
         img = image.load_img(url, target_size=(224, 224))
     return img
 
+
 def resnet_model(img):
-    ''' Processes image into an array of vectors
-    and decodes the vectors to make object classification predictions
+    '''
+    Process image into an array of vectors
+    and decode the vectors to make object classification predictions.
     '''
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
@@ -33,6 +38,3 @@ def resnet_model(img):
     results = decode_predictions(features, top=3)[0]
     preds = {tup[1]: tup[2] for tup in results}
     return preds
-
-# url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
-# print(resnet_model(process_img_path(url)))
