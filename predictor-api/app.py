@@ -32,16 +32,10 @@ def create_app():
         # Process the image and generate predictions.
         predictions = resnet_model(process_img_path(url))
 
-        # Return JSON object with photo_id and
-        # a list of predictions as a string, unless
-        # the url was invalid.  
+        # Return JSON object with photo_id and a list of predictions as a string.
         return jsonify(
             photo_id=photo_id,
             predictions=str(predictions)
         )
-
-    # @app.errorhandler(werkzeug.exceptions.InternalServerError)
-    # def handle_bad_request(e):
-    #     return 'Invalid URL!', 500
 
     return app
