@@ -15,9 +15,7 @@ if __name__ == '__main__':
     # url = 'http://<YOUR-LOCAL-ADDRESS-HERE>/predictor'
 
     # This is a sample image url to send to the predictor api.
-    photo_url = '''
-        https://upload.wikimedia.org/wikipedia/commons/3/3a/Charles-pineapple.jpg
-        '''
+    photo_url = '''https://upload.wikimedia.org/wikipedia/commons/3/3a/Charles-pineapple.jpg'''
 
     # The sample url (photo_url) and a dummy "photo_id"
     # will be sent to the api.
