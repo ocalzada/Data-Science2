@@ -7,7 +7,6 @@ import requests
 import json
 
 if __name__ == '__main__':
-    '''Docstring explaining more'''
     # Use the address below to ping the api deployed on heroku.
     url = "https://pic-metric-1.herokuapp.com/predictor"
     # Use the address below to ping the api you'be deployed locally.
@@ -21,11 +20,9 @@ if __name__ == '__main__':
     val = {'url': photo_url, 'photo_id': 123456789}
     r_success = requests.post(url, data=json.dumps(val))
 
-    # 
+    # Print the response code and content of response if the "status_code" is 200.
     print(f'request responded: {r_success}.')
     if r_success.status_code == 200:
         print(f'the content of the response was {r_success.json()}')
     else:
         print(r_success)
-    # you'll get a 200 response if the keys align,
-    # and something bad if the keys don't align.
