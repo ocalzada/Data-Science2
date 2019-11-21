@@ -1,7 +1,13 @@
+'''
+This script creates a custom clock schedule to
+periodically restart all dynos of the predictor
+api deployed on heroku every three minutes.
+'''
 from apscheduler.schedulers.blocking import BlockingScheduler
 import os
 
 sched = BlockingScheduler()
+
 
 @sched.scheduled_job('interval', minutes=3)
 def timed_job():
