@@ -1,10 +1,12 @@
-'''
+"""
 This is routing logic for pic-metric-1/predictor.
-'''
+"""
 from flask import Flask, request
 from flask import jsonify
 from .resnet50 import process_img_path, resnet_model
-from werkzeug.debug import get_current_traceback
+
+
+# from werkzeug.debug import get_current_traceback
 
 
 def create_app():
@@ -12,10 +14,10 @@ def create_app():
 
     @app.route('/predictor', methods=['POST'])
     def predictor():
-        '''
+        """
         This is a route that expects an image url and id.
         It returns image classifications, probabilities, and the photo_id.
-        '''
+        """
         # Get info from backend.
         lines = request.get_json(force=True)
 
@@ -34,13 +36,12 @@ def create_app():
         # a list of predictions as a string, unless
         # the url was invalid.  
         return jsonify(
-        	photo_id=photo_id,
-        	predictions=str(predictions)
-        	)
+            photo_id=photo_id,
+            predictions=str(predictions)
+        )
 
-    @app.errorhandler(werkzeug.exceptions.InternalServerError)
-    def handle_bad_request(e):
-        return 'Invalid URL!', 500
-
+    # @app.errorhandler(werkzeug.exceptions.InternalServerError)
+    # def handle_bad_request(e):
+    #     return 'Invalid URL!', 500
 
     return app
