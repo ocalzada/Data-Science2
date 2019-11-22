@@ -37,7 +37,7 @@ def create_app():
         # the url was invalid.  
         return jsonify(
             photo_id=photo_id,
-            predictions=predictions
+            predictions=str(predictions)
         )
 
     # @app.errorhandler(werkzeug.exceptions.InternalServerError)
