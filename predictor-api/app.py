@@ -35,7 +35,7 @@ def create_app():
         # Return JSON object with photo_id and a list of predictions as a string.
         return jsonify(
             photo_id=photo_id,
-            predictions=str(predictions)
+            predictions=predictions
         )
 
     return app
