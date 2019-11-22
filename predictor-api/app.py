@@ -39,8 +39,4 @@ def create_app():
         # the url was invalid.  
         return jsonify(send_back)
 
-    # @app.errorhandler(werkzeug.exceptions.InternalServerError)
-    # def handle_bad_request(e):
-    #     return 'Invalid URL!', 500
-
     return app
