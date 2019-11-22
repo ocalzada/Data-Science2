@@ -32,6 +32,7 @@ def create_app():
         # Process the image and generate predictions.
         predictions = resnet_model(process_img_path(url))
 
+        # Cast each confidence percentage as a float.
         predictions = {key:float(value) for (key,value) in predictions.items()}
 
         send_back = {'photo_id': photo_id, 'predictions': predictions}
