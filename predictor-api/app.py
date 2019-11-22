@@ -32,10 +32,11 @@ def create_app():
         # Process the image and generate predictions.
         predictions = resnet_model(process_img_path(url))
 
-        # Return JSON object with photo_id and a list of predictions as a string.
-        return jsonify(
-            photo_id=photo_id,
-            predictions=predictions
-        )
+        send_back = {'photo_id': photo_id, 'predictions': predictions}
+
+        # Return JSON object with photo_id and
+        # a list of predictions as a string, unless
+        # the url was invalid.  
+        return jsonify(send_back)
 
     return app
