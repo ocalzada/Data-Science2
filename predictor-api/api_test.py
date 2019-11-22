@@ -9,10 +9,11 @@ import json
 
 if __name__ == '__main__':
     # Use the address below to ping the api deployed on heroku.
-    url = "https://pic-metric-1.herokuapp.com/predictor"
+    # url = "https://pic-metric-1.herokuapp.com/predictor"
     # Use the address below to ping the api you'be deployed locally.
     # You local address should look something like "127.0.0.1:5000".
     # url = 'http://<YOUR-LOCAL-ADDRESS-HERE>/predictor'
+    url = 'http://127.0.0.1:5000/predictor'
 
     # This is a sample image url to send to the predictor api.
     photo_url = '''https://upload.wikimedia.org/wikipedia/commons/3/3a/Charles-pineapple.jpg'''
